@@ -9,6 +9,7 @@ class MyElement extends LitElement {
   static get styles() {
     return css`
       div{
+        border-radius:50%;
         height:100px;
         width:100px;
         border:1px solid black;
@@ -32,12 +33,7 @@ class MyElement extends LitElement {
   }
   render() {
     return html` 
-      <div class=${this.color}> 
-      Im changing
-      </div>
-      <div class=${this.color}> 
-      Im changing
-      </div>
+      <div class=${this.color}></div>
     `;
   }
 

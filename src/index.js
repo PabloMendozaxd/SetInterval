@@ -10,5 +10,33 @@ class MyElement extends LitElement {
      prop5:{type:Object,reflect:true}
     }
   }
+  constructor(){
+    super();
+    this.prop1='';
+    this.prop2=0;
+    this.prop3=false;
+    this.prop4=[];
+    this.prop5={};
+  }
+
+  render() {
+    return html`
+      <p>prop1 ${this.prop1}</p>
+      <p>prop2 ${this.prop2}</p>
+      <p>prop3 ${this.prop3}</p>
+
+      <p>prop4: ${this.prop4.map((item, index) =>
+        html`<span>[${index}]:${item}&nbsp;</span>`)}
+      </p>
+
+      <p>prop5:
+        ${Object.keys(this.prop5).map(item =>
+          html`<span>${item}: ${this.prop5[item]}&nbsp;</span>`)}
+      </p>
+
+      <button @click="${this.changeProperties}">change properties</button>
+      <button @click="${this.changeAttributes}">change attributes</button>
+    `;
+  }
 }
 customElements.define("my-element", MyElement);

@@ -1,51 +1,14 @@
 import { LitElement, html, css } from "lit-element";
 
 class MyElement extends LitElement {
-  static get properties() {
-    return {
-      myBool: { type: Boolean },
-    };
+  static get properties(){
+    return{
+     prop1:{type:String,reflect:true},
+     prop2:{type:Number,reflect:true},
+     prop3:{type:Boolean,reflect:true},
+     prop4:{type:Array,reflect:true},
+     prop5:{type:Object,reflect:true}
+    }
   }
-  static get styles() {
-    return css`
-      div{
-        border-radius:50%;
-        height:100px;
-        width:100px;
-        border:1px solid black;
-      }
-      .red {
-        background-color:red;
-      }
-      .blue {
-        background-color: blue;
-      }
-    `;
-  }
-  constructor() {
-    super();
-    this.color='red';
-    this.myBool = true;
-    this.addEventListener("change-color", (e) => {
-      this.myBool = e.detail;
-    });
-    this.changeText();
-  }
-  render() {
-    return html` 
-      <div class=${this.color}></div>
-    `;
-  }
-
-  changeText() {
-    setInterval(() => {
-      let change = new CustomEvent("change-color", {
-        detail: !this.myBool,
-      });
-      this.dispatchEvent(change);
-      this.myBool ? this.color='blue': this.color="red";
-    }, 1000);
-  }
-  
 }
 customElements.define("my-element", MyElement);
